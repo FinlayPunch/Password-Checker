@@ -1,25 +1,39 @@
 import gooeypie as gp
 
+def toggle_mask(event):
+    secret.toggle()
 
-def say_hello(event):
-    hello_lbl.text = 'Hello Gooey Pie!'
+def on_text_change(event):
+    text = secret.text
+    print(text)
+    if text == "Test":
+        label.text = "1,2,3"
 
 def check_exit():
     ok_to_exit = app.confirm_yesno(None, 'Are you sure you want to close?', 'question')
     return ok_to_exit
 
-app = gp.GooeyPieApp('Hello')
-app.width = 250
+app = gp.GooeyPieApp('Password Checker')
+
 app.title = 'Password Checker'
 
+question = gp.Label(app, "Type in your password")
 
-hello_btn = gp.Button(app, 'Say Hello', say_hello)
-hello_lbl = gp.Label(app, '')
+secret = gp.Secret(app)
+secret.width = 50
+secret.add_event_listener('change', on_text_change)
 
-app.set_grid(2, 1)
+check = gp.Checkbox(app, 'Reveal Password')
+check.add_event_listener('change', toggle_mask)
 
-app.add(hello_btn, 1, 1, align='center')
-app.add(hello_lbl, 2, 1, align='center')
+label = gp.Label(app, '...')
+label_length = gp.Label(app, '...')
+
+app.set_grid(4, 1)
+app.add(question, 1, 1)
+app.add(secret, 2, 1)
+app.add(check, 3, 1)
+app.add(label, 4, 1, align='center')
 
 app.on_close(check_exit)
 
