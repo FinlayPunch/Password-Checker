@@ -10,12 +10,17 @@ def on_text_change(event):
         label.text = "1,2,3"
     if text == int:
         label_num.text = "Just a number"
-    if len(text) <= 5:
+    if len(text) == 0:
+        label_length.text = "Nothing"    
+    if len(text) >= 1:
         label_length.text = "Too short"
     if len(text) >= 10:
         label_length.text = "Better"
     if len(text) >= 15:
         label_length.text = "Good"
+
+def open_about_window(event):
+    about_window.show()
 
 def check_exit():
     ok_to_exit = app.confirm_yesno(None, 'Are you sure you want to close?', 'question')
@@ -30,7 +35,6 @@ question = gp.Label(app, "Type in your password")
 secret = gp.Secret(app)
 secret.width = 50
 
-
 check = gp.Checkbox(app, 'Reveal Password')
 check.add_event_listener('change', toggle_mask)
 
@@ -38,7 +42,7 @@ label = gp.Label(app, '...')
 label_length = gp.Label(app, '...')
 label_num = gp.Label(app, '...')
 
-about_btn = gp.Button(app, '?', None)
+about_btn = gp.Button(app, '?', open_about_window)
 about_btn.width = 5
 
 enter_btn = gp.Button(app, 'Enter', on_text_change)
@@ -52,6 +56,12 @@ app.add(label, 4, 1, align='center')
 app.add(label_length, 5, 1, align='center')
 app.add(label_num, 6, 1, align='center')
 app.add(about_btn, 6, 2, align='center')
+
+about_window = gp.Window(app, 'About')
+about_window.width = 300
+about_message = gp.Label(about_window, 'About: ')
+about_window.set_grid(1, 1)
+about_window.add(about_message, 1, 1)
 
 app.on_close(check_exit)
 
