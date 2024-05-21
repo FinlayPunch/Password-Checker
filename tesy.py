@@ -31,24 +31,20 @@ secret = gp.Secret(app)
 secret.width = 50
 secret.add_event_listener('change', on_text_change)
 
-check = gp.Checkbox(app, 'Reveal Password')
+check = gp.ImageButton(app, 'images/eepy.png', None)
 check.add_event_listener('change', toggle_mask)
 
 label = gp.Label(app, '...')
 label_length = gp.Label(app, '...')
 label_num = gp.Label(app, '...')
 
-about_btn = gp.Button(app, '?', None)
-about_btn.width = 5
-
 app.set_grid(6, 2)
 app.add(question, 1, 1)
 app.add(secret, 2, 1)
-app.add(check, 3, 1)
+app.add(check, 2, 2)
 app.add(label, 4, 1, align='center')
 app.add(label_length, 5, 1, align='center')
 app.add(label_num, 6, 1, align='center')
-app.add(about_btn, 6, 2, align='center')
 
 app.on_close(check_exit)
 
