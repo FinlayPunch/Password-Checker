@@ -29,7 +29,7 @@ question = gp.Label(app, "Type in your password")
 
 secret = gp.Secret(app)
 secret.width = 50
-secret.add_event_listener('change', on_text_change)
+
 
 check = gp.Checkbox(app, 'Reveal Password')
 check.add_event_listener('change', toggle_mask)
@@ -41,9 +41,12 @@ label_num = gp.Label(app, '...')
 about_btn = gp.Button(app, '?', None)
 about_btn.width = 5
 
+enter_btn = gp.Button(app, 'Enter', on_text_change)
+
 app.set_grid(6, 2)
 app.add(question, 1, 1)
 app.add(secret, 2, 1)
+app.add(enter_btn, 2, 2, align='center')
 app.add(check, 3, 1)
 app.add(label, 4, 1, align='center')
 app.add(label_length, 5, 1, align='center')
