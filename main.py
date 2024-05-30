@@ -8,16 +8,20 @@ def on_text_change(event):
     print(text)
     if text == "Test":
         label.text = "1,2,3"
-    if text == int:
-        label_num.text = "Just a number"
+    if text.isdigit():
+        label_num.text = "Don't make it just numbers"
+    else:
+        label_num.text = "A combination of letters and numbers is good"
+    if text.isalpha():
+        label_num.text = "Try to have a combination of letters and numbers"
     if len(text) == 0:
         label_length.text = "Nothing"    
     if len(text) >= 1:
-        label_length.text = "Too short"
+        label_length.text = "Could be longer"
     if len(text) >= 10:
-        label_length.text = "Better"
+        label_length.text = "Decent length"
     if len(text) >= 15:
-        label_length.text = "Good"
+        label_length.text = "Good length"
 
 def open_about_window(event):
     about_window.show()
