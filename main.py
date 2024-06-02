@@ -7,7 +7,7 @@ def on_text_change(event):
     text = secret.text
     print(text)
     if text == "Test":
-        label.text = "1,2,3"
+        label.text = "Common word"
     if text.isdigit():
         label_num.text = "Don't make it just numbers"
     else:
