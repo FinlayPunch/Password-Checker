@@ -1,23 +1,39 @@
 import gooeypie as gp
 
+def load_common_words(file_path):
+    with open(file_path, 'r') as file:
+        common_words = file.read().splitlines()
+    return common_words
+
+def is_common_word(word, common_words):
+    return word in common_words
+
 def toggle_mask(event):
     secret.toggle()
 
+common_words = load_common_words('common_words.txt')
+
 def on_text_change(event):
+    
     text = secret.text
     print(text)
-    if text == "Test":
-        label.text = "Common word"
+
+    if is_common_word(text, common_words):
+        label.text = "Common password/word"
+    else:
+        label.text = "Not a common password/word"
+
     if text.isdigit():
         label_num.text = "Don't make it just numbers"
     else:
         label_num.text = "A combination of letters and numbers is good"
+        
     if text.isalpha():
         label_num.text = "Try to have a combination of letters and numbers"
     if len(text) == 0:
         label_length.text = "Nothing"    
     if len(text) >= 1:
-        label_length.text = "Could be longer"
+        label_length.text = "Too short"
     if len(text) >= 10:
         label_length.text = "Decent length"
     if len(text) >= 15:
