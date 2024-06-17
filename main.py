@@ -31,13 +31,14 @@ def on_text_change(event):
     if text.isalpha():
         label_num.text = "Try to have a combination of letters and numbers"
     if len(text) == 0:
-        label_length.text = "Nothing"    
+        label_length.text = "Nothing was entered"    
     if len(text) >= 1:
-        label_length.text = "Too short"
+        label_length.text = "Too short, try to make password 15+ characters in length"
     if len(text) >= 10:
-        label_length.text = "Decent length"
+        label_length.text = "Decent length, try to make password 15+ characters in length"
     if len(text) >= 15:
-        label_length.text = "Good length"
+        label_length.text = "Your password is 15+ characters long, a good length"
+
 
 def open_about_window(event):
     about_window.show()
