@@ -1,5 +1,6 @@
 import gooeypie as gp
 special_characters = "!@#$%^&*()-+?_=,<>/'"
+import pyperclip
 
 colors = ['ConflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray']
 fonts = ['Avenir']
@@ -77,6 +78,9 @@ def on_text_change(event):
 
     print(score)
 
+def copy_password(event):
+    pyperclip.copy(secret.text)
+    app.alert('Success', 'Password copied to clipboard')
 
 def open_about_window(event):
     about_window.show()
@@ -133,11 +137,13 @@ label_space = gp.Label(password_checker, '...')
 label_score = gp.Label(password_checker, '...')
 
 enter_btn = gp.Button(password_checker, 'Enter', on_text_change)
+copy_button = gp.Button(password_checker, 'Copy?', copy_password)
 
-password_checker.set_grid(9, 2)
+password_checker.set_grid(9, 3)
 password_checker.add(question, 1, 1)
 password_checker.add(secret, 2, 1)
 password_checker.add(enter_btn, 2, 2, align='center')
+password_checker.add(copy_button, 2, 3, align='center')
 password_checker.add(check, 3, 1)
 password_checker.add(label, 4, 1, align='center')
 password_checker.add(label_length, 5, 1, align='center')
