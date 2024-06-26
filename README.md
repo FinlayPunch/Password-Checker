@@ -4,7 +4,7 @@
 
 <b1>By Finlay Punch</b1><br><br>
 
-<b2>This is a python based application that checks user inputted passwords through the help of the <b>GooeyPie<b> library. It was made by me over the course of a months for my Task 2 assessment for Year 11 Software Engineering.
+<b2>This is a python based application that checks user inputted passwords through the help of the <b>GooeyPie</b> library. It was made by me over the course of a months for my Task 2 assessment for Year 11 Software Engineering.
 </b2>
 
 ![image](https://github.com/FinlayPunch/Password-Checker/assets/150302225/82d8b91e-1170-4b77-aecd-e9705c0d007f)
@@ -14,11 +14,11 @@
 <b1>The functionaility of FishFixer is easy to grasp and can be learned through these steps.</b1><br><br>
 
 <b2>
-1. Click the 'Open Password Checker' button on the main page.<br><br>
+1. Click the <b>'Open Password Checker'</b> button on the main page.<br><br>
 2. Enter a password of your choice into the empty input bar and press enter.<br><br>
-3. The ... lines underneath the input will turn into text that will advise you on how to improve your password.<br><br>
+3. The <b>...</b> lines underneath the input will turn into text that will advise you on how to <b>improve your password</b>.<br><br>
 4. You will get a score based on how many components of a password yours has.<br><br>
-5. The lowest is 0 stars, the highest is 5. Aim for five.<br><br>
+5. The lowest is 0 stars, the highest is 5. <b>Aim for five</b>.<br><br>
 6. You can copy your password at any time.<br><br>
   
 </b2>
