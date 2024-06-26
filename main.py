@@ -27,41 +27,54 @@ def on_text_change(event):
 
     if is_common_word(text, common_words):
         label.text = "Common password/word. ☆"
+        label.font_weight = 'bold'
     else:
         label.text = "Not a common password/word. ★"
         score += 1
+        label.font_weight = 'normal'
 
     if text.isdigit():
-        label_num.text = "Your password is just numbers, try to put some letters in it as well. ☆"
+        label_num.text = "It is just numbers, try to put some letters in it as well. ☆"
+        label_num.font_weight = 'bold'
     elif text.isalpha():
         label_num.text = "Try to have a combination of letters and numbers. ☆"
+        label_num.font_weight = 'bold'
     elif any(c.isdigit() for c in text) and any(c.isalpha() for c in text):
-        label_num.text = " Your password has a combination of letters and numbers, good. ★"
+        label_num.text = "It has a combination of letters and numbers, good. ★"
         score += 1
+        label_num.font_weight = 'normal'
     else:
         label_num.text = "Try to have a combination of letters and numbers. ☆"
+        label_num.font_weight = 'bold'
 
     if len(text) == 0:
         label_length.text = "Nothing entered"    
     if len(text) >= 1:
         label_length.text = "It is less than 10 letters long, try making it longer. ☆"
+        label_length.font_weight = 'bold'
     if len(text) >= 10:
         label_length.text = "It is 10 or more letters long, try making it a bit longer.☆"
+        label_length.font_weight = 'bold'
     if len(text) >= 15:
         label_length.text = "It is 15 or more letters long, thats a good length. ★"
         score += 1
+        label_length.font_weight = 'normal'
 
     if any(c in special_characters for c in s):
         label_special.text = "Your password has special characters in it ★"
         score += 1
+        label_special.font_weight = 'normal'
     else:
         label_special.text = "Try to include some special characters in it (e.g. !, #, $) ☆"
+        label_special.font_weight = 'bold'
 
     if ' ' in text:
         label_space.text = "Having a space in it is good ★"
         score += 1
+        label_space.font_weight = 'normal'
     else:
         label_space.text = "Try putting a space in it ☆"
+        label_space.font_weight = 'bold'
 
     if score == 0:
         label_score.text = "☆☆☆☆☆"
@@ -110,6 +123,14 @@ about_btn = gp.Button(main_window, 'About', open_about_window)
 help_btn = gp.Button(main_window, 'Help', open_help_window)
 about_btn.width = 6
 main_title.font_size = 20
+main_title.font_name = 'Segoe UI Black'
+main_title.color = 'Blue'
+main_label1.color = 'Royal Blue'
+main_label2.color = 'Royal Blue'
+main_label3.color = 'Royal Blue'
+main_label1.font_weight = 'bold'
+main_label2.font_weight = 'bold'
+main_label3.font_weight = 'bold'
 main_window.set_grid(5, 3)
 main_window.add(main_title, 1, 2, align ='center')
 main_window.add(main_label1, 2, 2, align ='center')
@@ -129,12 +150,12 @@ secret.width = 50
 check = gp.Checkbox(password_checker, 'Reveal Password')
 check.add_event_listener('change', toggle_mask)
 
-label = gp.Label(password_checker, '...')
-label_length = gp.Label(password_checker, '...')
-label_num = gp.Label(password_checker, '...')
-label_special = gp.Label(password_checker, '...')
-label_space = gp.Label(password_checker, '...')
-label_score = gp.Label(password_checker, '...')
+label = gp.StyleLabel(password_checker, '...')
+label_length = gp.StyleLabel(password_checker, '...')
+label_num = gp.StyleLabel(password_checker, '...')
+label_special = gp.StyleLabel(password_checker, '...')
+label_space = gp.StyleLabel(password_checker, '...')
+label_score = gp.StyleLabel(password_checker, '...')
 
 enter_btn = gp.Button(password_checker, 'Enter', on_text_change)
 copy_button = gp.Button(password_checker, 'Copy?', copy_password)
