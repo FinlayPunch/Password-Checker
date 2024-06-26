@@ -29,7 +29,7 @@
 
 <b1>
 1. Clone the repository: https://github.com/FinlayPunch/Connections-Asessment.git<br><br>
-3. Navigate to where ever you cloned the repository and open it in the IDE of your choice (Visual Studio Code perhaps).<br><br>
+2. Navigate to where ever you cloned the repository and open it in the IDE of your choice (Visual Studio Code perhaps).<br><br>
 3. In the terminal, type <b>pip instal pyperclip</b>. This is nescesary or else copying to clip board won't work.<br><br>
 4. Open the files in it called <b>main.py</b> and <b>common_words.text</b>. All other files are archaic or unrelated.<br><br>
 5. Run the file.<br><br>
