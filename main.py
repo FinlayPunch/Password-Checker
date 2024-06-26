@@ -110,6 +110,8 @@ def open_password_checker(event):
 
 app = gp.GooeyPieApp('Password Checker')
 
+app.set_icon('fees.PNG')
+
 # Main Window
 
 main_window = gp.Window(app, 'Main Window')
@@ -186,7 +188,7 @@ help_message1 = gp.Label(help_window, '1. Type your password of choice into the 
 help_message2 = gp.Label(help_window, '2. Click the enter button.')
 help_message3 = gp.Label(help_window, '3. Five lines of text will appear, telling you what your password is, or isnt laking in.')
 help_message4 = gp.Label(help_window, '4. The star at the bottom of the screen are your score, 5 is best.')
-help_message5 = gp.Label(help_window, '5. When you get a score of 5, you can copy your password to clipboard.')
+help_message5 = gp.Label(help_window, '5. You can copy you password at any given time.')
 help_window.set_grid(5, 1)
 help_window.add(help_message1, 1, 1)
 help_window.add(help_message2, 2, 1)
