@@ -149,6 +149,8 @@ main_label3.color = 'Royal Blue'
 main_label1.font_weight = 'bold'
 main_label2.font_weight = 'bold'
 main_label3.font_weight = 'bold'
+
+# Create the structure of the Main Window
 main_window.set_grid(5, 3)
 main_window.add(main_title, 1, 2, align ='center')
 main_window.add(main_label1, 2, 2, align ='center')
@@ -179,6 +181,7 @@ label_score = gp.StyleLabel(password_checker, '...')
 enter_btn = gp.Button(password_checker, 'Enter', on_text_change)
 copy_button = gp.Button(password_checker, 'Copy?', copy_password)
 
+# Create the structure of the password page
 password_checker.set_grid(9, 3)
 password_checker.add(question, 1, 1)
 password_checker.add(secret, 2, 1)
@@ -207,6 +210,8 @@ help_message2 = gp.Label(help_window, '2. Click the enter button.')
 help_message3 = gp.Label(help_window, '3. Five lines of text will appear, telling you what your password is, or isnt laking in.')
 help_message4 = gp.Label(help_window, '4. The star at the bottom of the screen are your score, 5 is best.')
 help_message5 = gp.Label(help_window, '5. You can copy you password at any given time.')
+
+# Create the structure of the help window
 help_window.set_grid(5, 1)
 help_window.add(help_message1, 1, 1)
 help_window.add(help_message2, 2, 1)
