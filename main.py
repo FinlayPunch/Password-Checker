@@ -1,30 +1,34 @@
 import gooeypie as gp
+
+# Special characters to check against in the password
 special_characters = "!@#$%^&*()-+?_=,<>/'"
 import pyperclip
 
-colors = ['ConflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray']
-fonts = ['Avenir']
-styles = ['italic', 'normal']
-
+# Load common words from the common_words text file
 def load_common_words(file_path):
     with open(file_path, 'r') as file:
         common_words = file.read().splitlines()
     return common_words
 
+# Check if the password is in the list of common words
 def is_common_word(word, common_words):
     return word in common_words
 
+# Toggle the visibility of the password
 def toggle_mask(event):
     secret.toggle()
 
+# Load common words
 common_words = load_common_words('common_words.txt')
 
+# Function to handle password evaluation and feedback
 def on_text_change(event):
     text = secret.text
     print(text)
     s = text
     score = 0
 
+    # Check if the password is a common word
     if is_common_word(text, common_words):
         label.text = "Common password/word. ☆"
         label.font_weight = 'bold'
@@ -33,6 +37,7 @@ def on_text_change(event):
         score += 1
         label.font_weight = 'normal'
 
+    # Check for numeric, alphabetic, and alphanumeric content
     if text.isdigit():
         label_num.text = "It is just numbers, try to put some letters in it as well. ☆"
         label_num.font_weight = 'bold'
@@ -47,6 +52,7 @@ def on_text_change(event):
         label_num.text = "Try to have a combination of letters and numbers. ☆"
         label_num.font_weight = 'bold'
 
+    # Check password length
     if len(text) == 0:
         label_length.text = "Nothing entered"    
     if len(text) >= 1:
@@ -60,6 +66,7 @@ def on_text_change(event):
         score += 1
         label_length.font_weight = 'normal'
 
+    # Check for special characters
     if any(c in special_characters for c in s):
         label_special.text = "Your password has special characters in it ★"
         score += 1
@@ -68,6 +75,7 @@ def on_text_change(event):
         label_special.text = "Try to include some special characters in it (e.g. !, #, $) ☆"
         label_special.font_weight = 'bold'
 
+    # Check for spaces
     if ' ' in text:
         label_space.text = "Having a space in it is good ★"
         score += 1
@@ -76,6 +84,7 @@ def on_text_change(event):
         label_space.text = "Try putting a space in it ☆"
         label_space.font_weight = 'bold'
 
+    # Display score in the form of stars
     if score == 0:
         label_score.text = "☆☆☆☆☆"
     elif score == 1:
@@ -91,29 +100,35 @@ def on_text_change(event):
 
     print(score)
 
+# Copy password to clipboard
 def copy_password(event):
     pyperclip.copy(secret.text)
     app.alert('Success', 'Password copied to clipboard')
 
+# Open the About window
 def open_about_window(event):
     about_window.show()
 
+# Open the Help window
 def open_help_window(event):
     help_window.show()
 
+# Confirm before exiting the application
 def check_exit():
     ok_to_exit = app.confirm_yesno(None, 'Are you sure you want to close?', 'question')
     return ok_to_exit
 
+# Open the Password Checker window
 def open_password_checker(event):
     password_checker.show()
 
+# Create main application
 app = gp.GooeyPieApp('Password Checker')
 
+# Set application icon
 app.set_icon('fees.PNG')
 
-# Main Window
-
+# Main Window setup
 main_window = gp.Window(app, 'Main Window')
 main_button = gp.Button(main_window, 'Open Password Checker', open_password_checker)
 main_title = gp.StyleLabel(main_window, 'Welcome to FishFixer')
@@ -142,7 +157,7 @@ main_window.add(main_button, 5, 2, align ='center')
 main_window.add(about_btn, 5, 3, align='center')
 main_window.add(help_btn, 5, 1, align='center')
 
-# Password Checker Window
+# Password Checker Window setup
 password_checker = gp.Window(app, 'Password Checker')
 question = gp.Label(password_checker, "Type in your password")
 
@@ -176,13 +191,14 @@ password_checker.add(label_space, 8, 1, align='center')
 password_checker.add(label_score, 9, 1, align='center')
 password_checker.add(about_btn, 6, 2, align='center')
 
-# About Window
+# About Window setup
 about_window = gp.Window(app, 'About')
 about_window.width = 300
 about_message = gp.Label(about_window, 'Created by Finlay Punch for my Year 11 SEN Task 2 asessment. Made to solve the common cybersecurity issue of having a bad password')
 about_window.set_grid(1, 1)
 about_window.add(about_message, 1, 1)
 
+# Help Window setup
 help_window = gp.Window(app, 'Help')
 help_message1 = gp.Label(help_window, '1. Type your password of choice into the text box in the password checker menu.')
 help_message2 = gp.Label(help_window, '2. Click the enter button.')
@@ -196,8 +212,12 @@ help_window.add(help_message3, 3, 1)
 help_window.add(help_message4, 4, 1)
 help_window.add(help_message5, 5, 1)
 
+# Set up close confirmation
 app.on_close(check_exit)
 
+# Show main window and hide password checker initially
 main_window.show()
-password_checker.hide()  # Ensure the password checker window is hidden initially
+password_checker.hide()
+
+# Run the application
 app.run()
