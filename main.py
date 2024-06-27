@@ -140,6 +140,7 @@ about_btn = gp.Button(main_window, 'About', open_about_window)
 help_btn = gp.Button(main_window, 'Help', open_help_window)
 about_btn.width = 6
 main_title.font_size = 20
+# Creates the syles within the main window
 main_title.font_name = 'Segoe UI Black'
 main_title.color = 'Blue'
 main_label1.color = 'Royal Blue'
@@ -167,6 +168,7 @@ secret.width = 50
 check = gp.Checkbox(password_checker, 'Reveal Password')
 check.add_event_listener('change', toggle_mask)
 
+#Used in conjunction with previous code to make the related text either bold or normal.
 label = gp.StyleLabel(password_checker, '...')
 label_length = gp.StyleLabel(password_checker, '...')
 label_num = gp.StyleLabel(password_checker, '...')
