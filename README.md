@@ -4,7 +4,7 @@
 
 <b1>By Finlay Punch</b1><br><br>
 
-<b2>This is a python based application that checks user inputted passwords through the help of the <b>GooeyPie</b> library. It was made by me over the course of a months for my Task 2 assessment for Year 11 Software Engineering.
+<b2>This is a python based application that checks user inputted passwords through the help of the <b>GooeyPie</b> library. It was made by me over the course of a month for my Task 2 assessment for Year 11 Software Engineering.
 </b2>
 
 ![image](https://github.com/FinlayPunch/Password-Checker/assets/150302225/82d8b91e-1170-4b77-aecd-e9705c0d007f)
